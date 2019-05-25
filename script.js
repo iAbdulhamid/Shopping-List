@@ -11,6 +11,15 @@ function createListItem (){
     li.appendChild(document.createTextNode(input.value));
     ul.appendChild(li);
     input.value = '';
+
+    var btnDone = document.createElement("button");
+        btnDone.appendChild(document.createTextNode("Done"));
+ 		li.appendChild(btnDone);
+ 		btnDone.onclick = doneParent;
+    var btnRemove = document.createElement("button");
+        btnRemove.appendChild(document.createTextNode("Remove"));
+ 		li.appendChild(btnRemove);
+ 		btnRemove.onclick = removeParent;
 }
 
 function addListItemAfterKeyPress(event) {
@@ -25,3 +34,14 @@ function addListItemAfterClick() {
 
 input.addEventListener('keypress', addListItemAfterKeyPress);
 addButton.addEventListener('click', addListItemAfterClick);
+
+function doneParent(event) {
+    event.target.parentNode.classList.toggle('done');
+    event.value = "Undone";
+}
+
+function removeParent(event){
+	event.target.parentNode.remove();
+} 
+
+
